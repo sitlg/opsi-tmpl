@@ -1,0 +1,17 @@
+[Product]
+type: localboot
+id: sitlg-regpatch-pdf
+name: sitlg Registry-Patch für Standard Programm PDF in Microsoft Windows
+description: Dieses Paket stellt sicher, dass Windows-Rechner ein festgelegtes Standard Programm zum Öffnen von PDF-Dateien nutzen.
+advice: Momentan ist Acrobat Reader die einzige zur Verfügung stehende Option.
+version: 1.0
+packageVersion: 0.1
+setupScript: install.ins
+uninstallScript: remove.ins
+
+[ProductProperty]
+name: enabledefault
+default: False
+description: Acrobat Reader als Standard Programm für PDFs nutzen?
+helptext: Setzt Adobe Acrobate Reader als Standard Programm zum Öffnen von PDF-Dateien.
+type: bool

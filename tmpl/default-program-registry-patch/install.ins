@@ -1,0 +1,60 @@
+[Actions]
+Encoding=UTF-8
+Message "Installiere sitlg Registry-Patch für Microsoft Windows PDF Standard Programm..." 
+ShowBitmap "%ScriptPath%\logo.png" "Registry-Patch" 
+
+DefVar $ExitCode$
+DefVar $MSVersion$
+DefVar $RegFile$
+Set $MSVersion$ = GetMsVersionInfo
+
+
+if CompareDotSeparatedNumbers($MSVersion$, "=", "10.0")
+  ; Windows 11 lies and tells us, that it is Windows 10
+  if CompareDotSeparatedNumbers(GetValue("build_number", GetMsVersionMap), ">=", "22000")
+    Sub_Install_Windows_11
+  else
+    Sub_Install_Windows_10
+  endif
+else
+  LogError "Unsupported OS version. No action."
+endif
+
+[Sub_Install_Windows_10]
+Set $RegFile$ = "win10.reg"
+Message "Installiere IServ-Registry-Patch für Windows 10..."
+Sub_Install_Windows_1011
+
+[Sub_Install_Windows_11]
+Set $RegFile$ = "win11.reg"
+Message "Installiere IServ-Registry-Patch für Windows 11..."
+Sub_Install_Windows_1011
+
+[Sub_Install_Windows_1011]
+if (GetProductProperty("enabledefault", "True") = "True")
+  Registry_Default_Program_Pdf_Acrobat_Reader
+EndIf
+
+; Sub_Do
+; DosInAnIcon_SetDefaultUserPermissions
+; Sub_UninstallSmb1Task
+; Files_Cleanup
+ExitWindows /Reboot
+
+; [Sub_HandleExitCode]
+; Set $ExitCode$ = GetLastExitCode
+; comment "GetLastExitCode: " + $ExitCode$
+; if not($ExitCode$ = "0")
+;   LogError "Fatal: subprocess returned exit code " + $ExitCode$
+;   IsFatalError
+; endif
+
+[Registry_Default_Program_Pdf_Acrobat_Reader]
+; openkey [HKLM\System\CurrentControlSet\Services\icssvc]
+; set "Start"=REG_DWORD:3
+
+; TODO: Find out if Acrobat Reader is setup with indirection in registry and the absolute path to excutable
+; openkey [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice]
+; set "ProgId"=REG_SZ:Applications\AcrobatReader.exe
+; openkey [HKEY_CLASSES_ROOT\Applications\AcrobatReader.exe]
+; set

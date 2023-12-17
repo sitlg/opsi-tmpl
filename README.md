@@ -18,6 +18,12 @@ Templates do **NOT** contain data files, as these would not make sense to track 
 
 - default-program-registry-patch
 
+## Development
+
+### References
+
+[Cookbook](https://docs.opsi.org/opsi-docs-en/4.3/opsi-script-manual/cook-book.html)
+
 ## License
 
 None

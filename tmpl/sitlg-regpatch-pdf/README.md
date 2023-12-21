@@ -12,3 +12,7 @@ The specific example sets the key for default program that open the file type `.
 ## References
 
 - [Win: Default Program for file extension (superuser)](https://superuser.com/a/1715213)
+
+## Notes
+
+Test with `ymdn011802`

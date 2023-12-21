@@ -1,0 +1,44 @@
+[Initial]
+Encoding=UTF-8
+Message "Deinstalliere sitlg Registry-Patch für Microsoft Windows PDF Standard Programm..."
+
+DefVar $ExitCode$
+DefVar $MSVersion$
+DefVar $RegFile$
+
+[Actions]
+; ShowBitmap "%ScriptPath%\logo.png" "Standard Programm PDF"
+Set $MSVersion$ = GetMsVersionInfo
+
+if CompareDotSeparatedNumbers($MSVersion$, "=", "10.0")
+  ; Windows 11 lies and tells us, that it is Windows 10
+  if CompareDotSeparatedNumbers(GetValue("build_number", GetMsVersionMap), ">=", "22000")
+    Sub_Install_Windows_11
+  else
+    Sub_Install_Windows_10
+  endif
+else
+  LogError "Unsupported OS version. No action."
+endif
+
+[Sub_Install_Windows_10]
+Set $RegFile$ = "win10.reg"
+Message "Deinstalliere IServ-Registry-Patch für Windows 10..."
+Sub_Uninstall_Windows_1011
+
+[Sub_Install_Windows_11]
+Set $RegFile$ = "win11.reg"
+Message "Deinstalliere IServ-Registry-Patch für Windows 11..."
+Sub_Uninstall_Windows_1011
+
+[Sub_Uninstall_Windows_1011]
+if (GetProductProperty("enabledefault", "True") = "True")
+  Registry_Default_Program_Pdf_Acrobat_Reader
+EndIf
+
+ExitWindows /Reboot
+
+[Registry_Default_Program_Pdf_Acrobat_Reader]
+; Unset default pdf viewer
+openkey [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice]
+set "ProgId"=REG_SZ:''

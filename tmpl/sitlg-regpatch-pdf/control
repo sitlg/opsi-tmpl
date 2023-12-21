@@ -15,3 +15,9 @@ default: False
 description: Acrobat Reader als Standard Programm für PDFs nutzen?
 helptext: Setzt Adobe Acrobate Reader als Standard Programm zum Öffnen von PDF-Dateien.
 type: bool
+
+[ProductDependency]
+action: setup
+requiredProduct: adobe-reader
+requiredStatus: installed
+requirementType: before

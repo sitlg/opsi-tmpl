@@ -22,7 +22,8 @@ That's where you can find any errors the OPSi script might have produced.
 
 ## Templates
 
-- default-program-registry-patch
+- sitlg-regpatch-pdf
+- sitlg-scratch-link
 
 ## Development
 

@@ -1,0 +1,10 @@
+[Product]
+type: localboot
+id: sitlg-scratch-link
+name: Scratch Link
+description: Scratch Link erlaubt eine Hardware-Anbindung an Scratch-Projekte.
+advice:
+version: 1.4.3
+packageVersion: 0.1
+setupScript: install.ins
+uninstallScript: remove.ins

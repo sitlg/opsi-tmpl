@@ -1,0 +1,28 @@
+[Initial]
+Message=Deinstalliere Scratch Link...
+DefVar $ExitCode$
+DefVar $ProductAction$
+
+[Actions]
+; ShowBitmap "%ScriptPath%\logo.png" "Scratch Link"
+WinBatch_Uninstall
+Sub_HandleExitCode
+
+[WinBatch_Uninstall]
+; https://wpkg.org/Scratch
+;
+; Download: https://downloads.scratch.mit.edu/link/windows.zip
+; Docs: https://scratch.mit.edu/download/scratch-link
+msiexec /passive /uninstall "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+
+[Sub_HandleExitCode]
+; check return code
+Set $ExitCode$ = GetLastExitCode
+comment "GetLastExitCode: " + $ExitCode$
+if not($ExitCode$ = "0" or $ExitCode$ = "1641" or $ExitCode$ = "3010")
+  ; 0    ERROR_SUCCESS
+  ; 1641 ERROR_SUCCESS_REBOOT_INITIATED
+  ; 3010 ERROR_SUCCESS_REBOOT_REQUIRED
+  LogError "Fatal: setup returned exit code " + $ExitCode$
+  IsFatalError
+endif

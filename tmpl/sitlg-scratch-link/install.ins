@@ -1,0 +1,66 @@
+[Initial]
+Message=Installiere Scratch Link...
+DefVar $ExitCode$
+DefVar $ProductAction$
+
+[Actions]
+; ShowBitmap "%ScriptPath%\logo.png" "Scratch Link"
+; Remove previous
+Set $ProductAction$ = "setup"
+; Sub "%ScriptPath%\remove.inc.ins"
+Sub_PrepareSetup
+Files_Copy
+WinBatch_Setup
+Sub_HandleExitCode
+WinBatch_Update
+Sub_HandleExitCode
+; WinBatch_SecurityUpdate
+; Sub_HandleExitCode
+; LinkFolder_Setup
+; Registry_Setup
+Files_Cleanup
+
+[Sub_PrepareSetup]
+if CompareDotSeparatedNumbers(GetMsVersionInfo, "10.0") < "0"
+  LogError "Fatal! Adobe Acrobat Reader requires Windows 10 or newer."
+  IsFatalError
+endif
+
+[Files_Copy]
+copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
+  
+[WinBatch_Setup]
+; https://wpkg.org/Scratch
+;
+; Download: https://downloads.scratch.mit.edu/link/windows.zip
+; Docs: https://scratch.mit.edu/download/scratch-link
+msiexec /passive /i "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+
+[WinBatch_Update]
+; The MSI package doesn't contain the latest security fixes, we have to add
+; those as a patch. The PATCH options allows to specify multiple msp files.
+; So we don't have to install all of them individually. Also the quarterly
+; updates are cumulative so we only need the newest patch.
+; Security Patches are not cumulative so they to specified separately.
+; EULA_ACCEPT=YES skips the EULA dialog when Adobe Reader is run for the first
+; time.
+msiexec /passive /update "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+
+[WinBatch_SecurityUpdate]
+; Security Patches are not cumulative so they to specified separately.
+; msiexec /passive /update "%ScriptPath%\data\AdbeRdrSecUpd11015.msp"
+
+[Sub_HandleExitCode]
+; check return code
+Set $ExitCode$ = GetLastExitCode
+comment "GetLastExitCode: " + $ExitCode$
+if not($ExitCode$ = "0" or $ExitCode$ = "1641" or $ExitCode$ = "3010")
+  ; 0    ERROR_SUCCESS
+  ; 1641 ERROR_SUCCESS_REBOOT_INITIATED
+  ; 3010 ERROR_SUCCESS_REBOOT_REQUIRED
+  LogError "Fatal: setup returned exit code " + $ExitCode$
+  IsFatalError
+endif
+
+[Files_Cleanup]
+del -sf "%opsiTmpDir%\%installingProdName%\"

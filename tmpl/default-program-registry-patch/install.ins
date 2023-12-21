@@ -55,7 +55,8 @@ ExitWindows /Reboot
 ; set "Start"=REG_DWORD:3
 
 ; TODO: Find out if Acrobat Reader is setup with indirection in registry and the absolute path to excutable
-; openkey [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice]
-; set "ProgId"=REG_SZ:Applications\AcrobatReader.exe
+openkey [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\UserChoice]
+set "ProgId"=REG_SZ:Applications\Acrobat.exe
+; NOTE: Redirection key in HKEY_ROOT should already be set via installation
 ; openkey [HKEY_CLASSES_ROOT\Applications\AcrobatReader.exe]
 ; set

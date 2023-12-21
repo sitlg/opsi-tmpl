@@ -1,13 +1,14 @@
-[Actions]
+[Initial]
 Encoding=UTF-8
-Message "Installiere sitlg Registry-Patch für Microsoft Windows PDF Standard Programm..." 
-ShowBitmap "%ScriptPath%\logo.png" "Registry-Patch" 
+Message="Installiere sitlg Registry-Patch für Microsoft Windows PDF Standard Programm..."
 
 DefVar $ExitCode$
 DefVar $MSVersion$
 DefVar $RegFile$
-Set $MSVersion$ = GetMsVersionInfo
 
+[Actions]
+ShowBitmap "%ScriptPath%\logo.png" "Registry-Patch" 
+Set $MSVersion$ = GetMsVersionInfo
 
 if CompareDotSeparatedNumbers($MSVersion$, "=", "10.0")
   ; Windows 11 lies and tells us, that it is Windows 10

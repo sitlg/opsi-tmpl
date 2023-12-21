@@ -22,6 +22,7 @@ That's where you can find any errors the OPSi script might have produced.
 
 ## Templates
 
+- sitlg-3d-modellbahn-studio
 - sitlg-regpatch-pdf
 - sitlg-scratch-link
 

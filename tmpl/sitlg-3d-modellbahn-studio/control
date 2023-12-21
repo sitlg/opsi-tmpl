@@ -1,0 +1,10 @@
+[Product]
+type: localboot
+id: sitlg-3d-modellbahn-studio
+name: 3D Modellbahn Studio
+description: 3D-Modellbahn Studio ermöglicht Ihnen auf einfache und spielerische Weise die Planung und Gestaltung von Miniaturwelten am eigenen PC.
+advice:
+version: 8.5
+packageVersion: 0.1
+setupScript: install.ins
+uninstallScript: remove.ins

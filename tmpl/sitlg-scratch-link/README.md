@@ -17,3 +17,8 @@ Make sure that the name is `ScratchLinkSetup.msi`.
 - Activate logo in `install.ins` file
 - Copy package to server into `/srv/deploy/install`
 - Run `chkdeploy` as root
+
+## Notes
+
+Test with `ymdn011793`
+Port 20111

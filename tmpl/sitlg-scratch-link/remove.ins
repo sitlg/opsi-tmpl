@@ -5,8 +5,13 @@ DefVar $ProductAction$
 
 [Actions]
 ; ShowBitmap "%ScriptPath%\logo.png" "Scratch Link"
+Files_Copy
 WinBatch_Uninstall
 Sub_HandleExitCode
+Files_Cleanup
+
+[Files_Copy]
+copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
 
 [WinBatch_Uninstall]
 ; https://wpkg.org/Scratch
@@ -26,3 +31,6 @@ if not($ExitCode$ = "0" or $ExitCode$ = "1641" or $ExitCode$ = "3010")
   LogError "Fatal: setup returned exit code " + $ExitCode$
   IsFatalError
 endif
+
+[Files_Cleanup]
+del -sf "%opsiTmpDir%\%installingProdName%\"

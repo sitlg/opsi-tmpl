@@ -12,8 +12,8 @@ Sub_PrepareSetup
 Files_Copy
 WinBatch_Setup
 Sub_HandleExitCode
-WinBatch_Update
-Sub_HandleExitCode
+; WinBatch_Update
+; Sub_HandleExitCode
 ; WinBatch_SecurityUpdate
 ; Sub_HandleExitCode
 ; LinkFolder_Setup
@@ -22,7 +22,7 @@ Files_Cleanup
 
 [Sub_PrepareSetup]
 if CompareDotSeparatedNumbers(GetMsVersionInfo, "10.0") < "0"
-  LogError "Fatal! Adobe Acrobat Reader requires Windows 10 or newer."
+  LogError "Fatal! Scratch Link requires Windows 10 or newer."
   IsFatalError
 endif
 
@@ -44,7 +44,8 @@ msiexec /passive /i "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
 ; Security Patches are not cumulative so they to specified separately.
 ; EULA_ACCEPT=YES skips the EULA dialog when Adobe Reader is run for the first
 ; time.
-msiexec /passive /update "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+; msiexec /passive /update "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+; NOTE: Patching not enabled with this msi package
 
 [WinBatch_SecurityUpdate]
 ; Security Patches are not cumulative so they to specified separately.

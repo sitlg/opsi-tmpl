@@ -1,0 +1,6 @@
+[Setup]
+Lang=de_DE
+Dir=C:\Program Files\3D-Modellbahn Studio V8.5
+Group=(Default)
+NoIcons=0
+Tasks=

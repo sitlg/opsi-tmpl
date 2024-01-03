@@ -12,8 +12,8 @@ Sub_PrepareSetup
 Files_Copy
 WinBatch_Setup
 Sub_HandleExitCode
-WinBatch_Update
-Sub_HandleExitCode
+; WinBatch_Update
+; Sub_HandleExitCode
 ; WinBatch_SecurityUpdate
 ; Sub_HandleExitCode
 ; LinkFolder_Setup
@@ -22,7 +22,7 @@ Files_Cleanup
 
 [Sub_PrepareSetup]
 if CompareDotSeparatedNumbers(GetMsVersionInfo, "10.0") < "0"
-  LogError "Fatal! Adobe Acrobat Reader requires Windows 10 or newer."
+  LogError "Fatal! 3D Modelleisenbahn Studio requires Windows 10 or newer."
   IsFatalError
 endif
 
@@ -36,6 +36,7 @@ copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
 ; Download: https://downloads.scratch.mit.edu/link/windows.zip
 ; Docs: https://scratch.mit.edu/download/scratch-link
 ; msiexec /passive /i "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+"%opsiTmpDir%\%installingProdName%\SetupModellbahnStudio" /LOADINF="%opsiTmpDir%\%installingProdName%\inf.txt" /SILENT
 
 [WinBatch_Update]
 ; The MSI package doesn't contain the latest security fixes, we have to add
@@ -46,10 +47,12 @@ copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
 ; EULA_ACCEPT=YES skips the EULA dialog when Adobe Reader is run for the first
 ; time.
 ; msiexec /passive /update "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
+; NOTE: No update functionality available
 
 [WinBatch_SecurityUpdate]
 ; Security Patches are not cumulative so they to specified separately.
 ; msiexec /passive /update "%ScriptPath%\data\AdbeRdrSecUpd11015.msp"
+; NOTE: No security update functionality available
 
 [Sub_HandleExitCode]
 ; check return code

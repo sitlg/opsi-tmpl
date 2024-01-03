@@ -3,6 +3,11 @@
 This package allows for setting a key in the registry for the purpose of configuring a default program.
 The specific example sets the key for default program that open the file type `.pdf`
 
+| Name             | Registry Patch PDF |
+|------------------|--------------------|
+| Pkg version      | 0.1                |
+| Software version | n/a                |
+
 ## Usage
 
 - Replace the `logo.png.txt` file with an actual image in PNG format with the name `logo.png`

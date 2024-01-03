@@ -1,7 +1,7 @@
 [Product]
 type: localboot
 id: sitlg-scratch-link
-name: Scratch Link
+name: Scratch Link (sitlg)
 description: Scratch Link erlaubt eine Hardware-Anbindung an Scratch-Projekte.
 advice:
 version: 1.4.3

@@ -4,11 +4,16 @@ This package installs Scratch Link.
 
 > Scratch Link allows you to connect hardware to interact with your Scratch projects.
 
+| Name             | Scratch Link |
+|------------------|--------------|
+| Pkg version      | 0.1          |
+| Software version | 1.4.3        |
+
 ## Installer
 
 [Direct download](https://downloads.scratch.mit.edu/link/windows.zip)
 
-Copy extraxted installer into `data` directory of package.
+Copy extracted installer into `data` directory of package.
 Make sure that the name is `ScratchLinkSetup.msi`.
 
 ## Usage
@@ -21,4 +26,4 @@ Make sure that the name is `ScratchLinkSetup.msi`.
 ## Notes
 
 Test with `ymdn011793`
-Port 20111
+TODO: Port 20111

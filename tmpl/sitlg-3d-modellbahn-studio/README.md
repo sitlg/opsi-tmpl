@@ -9,3 +9,7 @@
 
 [Website](https://www.3d-modellbahn.de/)
 [Download](https://www.3d-modellbahn.de/files/client/SetupModellbahnStudio.exe)
+
+## Notes
+
+Test with `ymdn011802`

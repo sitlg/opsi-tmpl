@@ -36,7 +36,7 @@ copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
 ; Download: https://downloads.scratch.mit.edu/link/windows.zip
 ; Docs: https://scratch.mit.edu/download/scratch-link
 ; msiexec /passive /i "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
-"%opsiTmpDir%\%installingProdName%\SetupModellbahnStudio" /LOADINF="%opsiTmpDir%\%installingProdName%\inf.txt" /SILENT
+"%opsiTmpDir%\%installingProdName%\SetupModellbahnStudio.exe" /LOADINF="%opsiTmpDir%\%installingProdName%\inf.txt" /SILENT
 
 [WinBatch_Update]
 ; The MSI package doesn't contain the latest security fixes, we have to add

@@ -36,4 +36,4 @@ That's where you can find any errors the OPSi script might have produced.
 
 ## License
 
-None
+[MIT](https://github.com/sitlg/opsi-tmpl/blob/master/LICENSE) (c) 2023 - 2024 sitlg and contributors

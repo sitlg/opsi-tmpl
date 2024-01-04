@@ -9,7 +9,8 @@ DefVar $ProductAction$
 Set $ProductAction$ = "setup"
 ; Sub "%ScriptPath%\remove.inc.ins"
 Sub_PrepareSetup
-Files_Copy
+; Files_Copy
+Sub "%ScriptPath%\copy_data.inc.ins"
 WinBatch_Setup
 Sub_HandleExitCode
 ; WinBatch_Update
@@ -18,7 +19,8 @@ Sub_HandleExitCode
 ; Sub_HandleExitCode
 ; LinkFolder_Setup
 ; Registry_Setup
-Files_Cleanup
+; Files_Cleanup
+Sub "%ScriptPath%\cleanup_data.inc.ins"
 
 [Sub_PrepareSetup]
 if CompareDotSeparatedNumbers(GetMsVersionInfo, "10.0") < "0"
@@ -26,8 +28,8 @@ if CompareDotSeparatedNumbers(GetMsVersionInfo, "10.0") < "0"
   IsFatalError
 endif
 
-[Files_Copy]
-copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
+; [Files_Copy]
+; copy -se "%ScriptPath%\data\*" "%opsiTmpDir%\%installingProdName%\"
 
 ; TODO: Find setup executable API
 [WinBatch_Setup]
@@ -66,5 +68,5 @@ if not($ExitCode$ = "0" or $ExitCode$ = "1641" or $ExitCode$ = "3010")
   IsFatalError
 endif
 
-[Files_Cleanup]
-del -sf "%opsiTmpDir%\%installingProdName%\"
+; [Files_Cleanup]
+; del -sf "%opsiTmpDir%\%installingProdName%\"

@@ -30,9 +30,9 @@ That's where you can find any errors the OPSi script might have produced.
 
 ### References
 
-[Packaging Tutorial](https://docs.opsi.org/opsi-docs-en/4.2/getting-started/packaging-tutorial.html)
-[Cookbook](https://docs.opsi.org/opsi-docs-en/4.3/opsi-script-manual/cook-book.html)
-[MSI error codes](https://learn.microsoft.com/en-us/windows/win32/msi/error-codes)
+- [Packaging Tutorial](https://docs.opsi.org/opsi-docs-en/4.2/getting-started/packaging-tutorial.html)
+- [Cookbook](https://docs.opsi.org/opsi-docs-en/4.3/opsi-script-manual/cook-book.html)
+- [MSI error codes](https://learn.microsoft.com/en-us/windows/win32/msi/error-codes)
 
 ## License
 

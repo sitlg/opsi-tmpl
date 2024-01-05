@@ -51,6 +51,10 @@ msiexec /passive /i "%opsiTmpDir%\%installingProdName%\ScratchLinkSetup.msi"
 ; Security Patches are not cumulative so they to specified separately.
 ; msiexec /passive /update "%ScriptPath%\data\AdbeRdrSecUpd11015.msp"
 
+[Allow_Firewall]
+; TODO: Correct path
+; netsh advfirewall firewall add rule "Scratch Link" dir=in action=allow program="C:\program files\scratch link\" profile=any enable=yes
+
 [Sub_HandleExitCode]
 ; check return code
 Set $ExitCode$ = GetLastExitCode

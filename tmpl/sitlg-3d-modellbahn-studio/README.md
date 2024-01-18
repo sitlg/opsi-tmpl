@@ -16,8 +16,23 @@ Make sure that the name is `SetupModellbahnStudio.exe`.
 
 ## Usage
 
-- Add Setup file to data directory and make sure it is named `SetupModellbahnStudio`
-- Update version in `control` file
+Add Setup file to data directory and make sure it is named `SetupModellbahnStudio.exe`.
+
+```
+wget https://www.3d-modellbahn.de/files/client/SetupModellbahnStudio.exe
+```
+
+Update version in `control` file, if necessary.
+
+```
+$ vi control
+```
+
+OR
+
+```
+$ nano control
+```
 
 ## References
 

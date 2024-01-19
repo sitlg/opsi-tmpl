@@ -15,6 +15,14 @@ Templates do **NOT** contain data files, as these would not make sense to track 
 - Make sure that the name of the package directory and product id in the `control` file are the same. Otherwise the package will be ignored.
 - Run `chkdeploy` to update local package registry and make the server aware of the new package
 
+### Source
+
+Get source of specific tag with
+
+```
+$ wget https://github.com/sitlg/opsi-tmpl/archive/refs/tags/<tag>.{tar.gz,zip}
+```
+
 ### Troubleshooting
 
 Installation logs can befound in IServ in `Verwaltung > Netzwerk > Geräte > [Gerät] > Programme > Protokolle`.
